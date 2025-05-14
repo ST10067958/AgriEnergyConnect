@@ -33,18 +33,25 @@ namespace AgriEnergyConnect.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult AddFarmer(Farmer farmer)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(farmer); 
+                _context.Farmers.Add(farmer);
+                _context.SaveChanges();
+                return RedirectToAction("Dashboard");
             }
 
-            _context.Farmers.Add(farmer);
-            _context.SaveChanges();
+            // TEMP: Show validation errors in ViewBag for debugging
+            ViewBag.ModelErrors = ModelState.Values
+                .SelectMany(v => v.Errors)
+                .Select(e => e.ErrorMessage)
+                .ToList();
 
-            return RedirectToAction("Dashboard");
+            return View(farmer);
         }
+
 
 
         [HttpGet]

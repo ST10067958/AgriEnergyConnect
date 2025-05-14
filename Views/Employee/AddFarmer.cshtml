@@ -8,7 +8,22 @@
 
 @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
 
-<form method="post" class="card p-4 shadow-sm bg-white">
+@if (ViewBag.ModelErrors != null)
+{
+    <div class="alert alert-warning">
+        <ul>
+            @foreach (var err in ViewBag.ModelErrors)
+            {
+                <li>@err</li>
+            }
+        </ul>
+    </div>
+}
+
+
+<form asp-action="AddFarmer" method="post" class="card p-4 shadow-sm bg-white">
+    @Html.AntiForgeryToken()
+
     <!-- Name -->
     <div class="mb-3">
         <label asp-for="Name" class="form-label">Full Name:</label>

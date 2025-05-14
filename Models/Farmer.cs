@@ -15,7 +15,6 @@ namespace AgriEnergyConnect.Models
 
         public string Location { get; set; }
 
-        // Navigation property
-        public List<Product> Products { get; set; }
+        public List<Product>? Products { get; set; } = new List<Product>();
     }
 }
