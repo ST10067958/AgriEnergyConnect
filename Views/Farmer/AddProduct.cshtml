@@ -1,0 +1,43 @@
+﻿@model AgriEnergyConnect.Models.Product
+
+@{
+    ViewData["Title"] = "Add Product";
+}
+
+<h2 class="text-primary mb-4"><i class="bi bi-plus-circle-fill"></i> Add New Product</h2>
+
+@Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+<form method="post" class="card p-4 shadow-sm bg-white">
+
+    <!-- Name -->
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Product Name:</label>
+        <input asp-for="Name" class="form-control" placeholder="e.g. Organic Tomatoes" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <!-- Category -->
+    <div class="mb-3">
+        <label asp-for="Category" class="form-label">Category:</label>
+        <input asp-for="Category" class="form-control" placeholder="e.g. Vegetables" />
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+
+    <!-- Production Date -->
+    <div class="mb-3">
+        <label asp-for="ProductionDate" class="form-label">Production Date:</label>
+        <input asp-for="ProductionDate" type="date" class="form-control" />
+        <span asp-validation-for="ProductionDate" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        <i class="bi bi-save-fill"></i> Save Product
+    </button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

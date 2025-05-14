@@ -1,0 +1,27 @@
+﻿@model List<AgriEnergyConnect.Models.Product>
+@{
+    ViewData["Title"] = "Farmer Dashboard";
+}
+<h2>Welcome, @ViewBag.Username!</h2>
+
+<a asp-action="AddProduct" class="btn btn-success">+ Add New Product</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Production Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Category</td>
+                <td>@item.ProductionDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

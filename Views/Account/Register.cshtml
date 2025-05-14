@@ -1,0 +1,48 @@
+﻿@model AgriEnergyConnect.Models.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2 class="text-primary mb-4"><i class="bi bi-person-plus-fill"></i> Register a New User</h2>
+
+<!-- ✅ Validation summary -->
+@Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+<form method="post" class="card p-4 shadow-sm bg-white">
+
+    <!-- Username -->
+    <div class="mb-3">
+        <label asp-for="Username" class="form-label">Username:</label>
+        <input asp-for="Username" class="form-control" placeholder="e.g. user123" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+
+    <!-- Password -->
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label">Password:</label>
+        <input asp-for="Password" type="password" class="form-control" placeholder="Enter a secure password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <!-- Role -->
+    <div class="mb-3">
+        <label asp-for="Role" class="form-label">Select Role:</label>
+        <select asp-for="Role" class="form-select">
+            <option value="">-- Choose Role --</option>
+            <option value="Farmer">Farmer</option>
+            <option value="Employee">Employee</option>
+        </select>
+        <span asp-validation-for="Role" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        <i class="bi bi-person-plus"></i> Register
+    </button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

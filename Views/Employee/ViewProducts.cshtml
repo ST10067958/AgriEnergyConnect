@@ -1,0 +1,50 @@
+﻿@model List<AgriEnergyConnect.Models.Product>
+@{
+    ViewData["Title"] = "All Products";
+}
+
+<h2>All Products</h2>
+
+<form method="get">
+    <label>Farmer:</label>
+    <select name="farmerId">
+        <option value="">-- All --</option>
+        @foreach (var farmer in ViewBag.Farmers)
+        {
+            <option value="@farmer.FarmerId">@farmer.Name</option>
+        }
+    </select>
+
+    <label>Category:</label>
+    <input type="text" name="category" />
+
+    <label>Start Date:</label>
+    <input type="date" name="startDate" />
+
+    <label>End Date:</label>
+    <input type="date" name="endDate" />
+
+    <button type="submit" class="btn btn-secondary">Filter</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Category</th>
+            <th>Production Date</th>
+            <th>Farmer</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Category</td>
+                <td>@product.ProductionDate.ToShortDateString()</td>
+                <td>@product.Farmer?.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
