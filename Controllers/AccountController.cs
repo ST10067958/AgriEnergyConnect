@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AgriEnergyConnect.Models;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace AgriEnergyConnect.Controllers
 {
@@ -47,18 +48,51 @@ namespace AgriEnergyConnect.Controllers
             return View();
         }
 
+
         [HttpPost]
         public IActionResult Register(User user)
         {
             if (ModelState.IsValid)
             {
-                _context.Users.Add(user);
-                _context.SaveChanges();
-                return RedirectToAction("Login");
+                try
+                {
+                    if (user.Role == "Farmer")
+                    {
+                        // Create a dummy farmer profile (you can improve this later)
+                        var farmer = new Farmer
+                        {
+                            Name = user.Username, // or ask for it on the form
+                            Email = user.Username + "@example.com",
+                            Location = "Unknown"
+                        };
+
+                        _context.Farmers.Add(farmer);
+                        _context.SaveChanges();
+
+                        user.FarmerId = farmer.FarmerId;
+                    }
+
+                    _context.Users.Add(user);
+                    _context.SaveChanges();
+
+                    return RedirectToAction("Login");
+                }
+                catch (DbUpdateException ex)
+                {
+                    ViewBag.Error = ex.InnerException?.Message ?? ex.Message;
+                }
             }
+
+            ViewBag.ModelErrors = ModelState.Values
+                .SelectMany(v => v.Errors)
+                .Select(e => e.ErrorMessage)
+                .ToList();
 
             return View(user);
         }
+
+
+
 
         public IActionResult Logout()
         {

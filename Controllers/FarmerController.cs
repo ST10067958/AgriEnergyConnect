@@ -2,6 +2,7 @@
 using AgriEnergyConnect.Models;
 using Microsoft.AspNetCore.Http;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace AgriEnergyConnect.Controllers
 {
@@ -40,18 +41,36 @@ namespace AgriEnergyConnect.Controllers
         public IActionResult AddProduct(Product product)
         {
             var userId = HttpContext.Session.GetInt32("UserId");
-            var user = _context.Users.FirstOrDefault(u => u.UserId == userId);
+            var user = _context.Users.Include(u => u.Farmer).FirstOrDefault(u => u.UserId == userId);
 
             if (user == null || user.Role != "Farmer")
+            {
                 return RedirectToAction("Login", "Account");
+            }
 
-            product.FarmerId = user.FarmerId ?? 0;
+            // Make sure FarmerId is linked
+            if (user.FarmerId == null)
+            {
+                ViewBag.Error = "You need a farmer profile to add a product.";
+                return View(product); // You can also redirect to create farmer
+            }
+
+            product.FarmerId = user.FarmerId.Value;
             product.ProductionDate = product.ProductionDate.ToLocalTime();
 
-            _context.Products.Add(product);
-            _context.SaveChanges();
-
-            return RedirectToAction("Dashboard");
+            try
+            {
+                _context.Products.Add(product);
+                _context.SaveChanges();
+                return RedirectToAction("Dashboard");
+            }
+            catch (DbUpdateException ex)
+            {
+                ViewBag.Error = ex.InnerException?.Message ?? ex.Message;
+                return View(product);
+            }
         }
+
+
     }
 }
