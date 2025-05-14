@@ -1,4 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿// ---------------------------------------------------------------------------
+// Title       : Java regex validate password examples
+// Adapted by  : Keagan Shaw (ST10067958) for ASP.NET Core
+// Original Author : Mkyong
+// Date        : 5 November 2020
+// Code Version: 1
+// URL         : https://mkyong.com/regular-expressions/how-to-validate-password-with-regular-expression/
+// Description : This controller uses password validation logic adapted from Mkyong’s regex examples.
+// Usage       : For educational purposes – adapted to C# validation in Agri-Energy Connect.
+// ---------------------------------------------------------------------------
+
+using Microsoft.AspNetCore.Mvc;
 using AgriEnergyConnect.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;

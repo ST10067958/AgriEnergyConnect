@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "All Farmers";
+}
+
+<div class="container py-4">
+    <h2 class="text-success mb-4">Registered Farmers</h2>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        @foreach (var farmer in Model)
+        {
+            <div class="col">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">@farmer.Name</h5>
+                        <p class="card-text">@farmer.Location</p>
+                        <p class="card-text"><small class="text-muted">@farmer.Email</small></p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

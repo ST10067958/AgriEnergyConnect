@@ -25,6 +25,16 @@ namespace AgriEnergyConnect.Controllers
             ViewBag.Farmers = _context.Farmers.ToList();
             return View();
         }
+        public IActionResult AllFarmers()
+        {
+            var role = HttpContext.Session.GetString("Role");
+            if (role != "Employee")
+                return RedirectToAction("Login", "Account");
+
+            var farmers = _context.Farmers.ToList();
+            return View(farmers);
+        }
+
 
         [HttpGet]
         public IActionResult AddFarmer()

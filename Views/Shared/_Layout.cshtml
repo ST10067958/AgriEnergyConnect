@@ -1,5 +1,5 @@
-﻿@using Microsoft.AspNetCore.Http
-@inject IHttpContextAccessor HttpContextAccessor
+﻿@inject IHttpContextAccessor HttpContextAccessor
+@using Microsoft.AspNetCore.Http
 
 <!DOCTYPE html>
 <html lang="en">
@@ -81,13 +81,6 @@
             @RenderBody()
         </main>
     </div>
-
-    <!-- Footer -->
-    <footer class="bg-light text-center text-muted py-3 mt-5 border-top">
-        <div class="container">
-            &copy; 2025 - AgriEnergyConnect | <a asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
 
     <!-- Scripts -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

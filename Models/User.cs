@@ -18,7 +18,6 @@ namespace AgriEnergyConnect.Models
         [Required]
         public string Role { get; set; } // "Farmer" or "Employee"
 
-        // Optional: link to a Farmer profile (if the user is a Farmer)
         public int? FarmerId { get; set; }
         public Farmer? Farmer { get; set; }
     }

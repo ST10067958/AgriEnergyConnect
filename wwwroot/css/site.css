@@ -1,53 +1,154 @@
-html {
-  font-size: 14px;
+﻿html {
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
+/* 🍃 Fresh Farm-Themed Background */
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f8f9fa;
+    background: url('/images/farm-background.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2f4f2f;
+   
+    
+    /* 🍏 Login Page Style */
+    .login-page
+
+{
+    min-height: 85vh;
+    background: url('/images/farm-background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    padding-top: 5vh;
 }
 
-h2 {
-    margin-bottom: 20px;
-    font-weight: 600;
+.login-box {
+    max-width: 400px;
+    background-color: #ffffffcc;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
 }
 
-form > div {
-    margin-bottom: 15px;
+/* Optional: Center the form better on small screens */
+@media (max-width: 576px) {
+    .login-box {
+        width: 90%;
+    }
 }
 
-input, select, button {
-    width: 100%;
-    padding: 8px;
-    font-size: 1rem;
 }
 
+/* 🎨 Navbar Styling */
+.navbar-dark.bg-dark {
+    background-color: #355e3b !important;
+}
+
+.nav-link {
+    color: #ffffff !important;
+}
+
+    .nav-link:hover {
+        color: #caffbf !important;
+    }
+
+/* 🌽 Cards */
+.card {
+    background: #ffffffdd;
+    border: 2px dashed #8fbc8f;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(85, 107, 47, 0.2);
+    padding: 1rem;
+}
+
+/* 🥕 Buttons */
 .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #6aaa64;
+    border-color: #5c9a57;
 }
+
+    .btn-primary:hover {
+        background-color: #4f8a4b;
+        border-color: #417b3d;
+    }
 
 .btn-success {
-    background-color: #28a745;
-    border-color: #28a745;
+    background-color: #f4a261;
+    border-color: #e07b3c;
 }
 
-.table {
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    .btn-success:hover {
+        background-color: #dd6b20;
+        border-color: #c95c1c;
+    }
+
+/* 🧷 Inputs and Labels */
+.form-label {
+    font-weight: 600;
+    color: #004d00;
 }
+
+.form-control, .form-select {
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* 🚨 Alerts */
+.alert-danger, .alert-warning {
+    background-color: #fff3cd;
+    border-radius: 6px;
+    padding: 10px;
+    border: 1px solid #ffeeba;
+}
+
+/* ✨ Subtle Fade Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+form, .card, h1, h2, h3 {
+    animation: fadeIn 0.7s ease-in-out;
+}
+
+/* 📝 Headings */
+h1, h2, h3 {
+    color: #2e8b57;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+/* 🌱 Dashboard Pages */
+.dashboard-page {
+    background: url('/images/farm-background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    padding: 60px 15px;
+    color: #2f4f2f;
+}
+
+    .dashboard-page h2 {
+        font-weight: bold;
+        color: #2e8b57;
+    }
+
+    .dashboard-page p {
+        font-size: 1.1rem;
+        color: #333;
+    }
+    .dashboard-page, .dashboard-page p, .dashboard-page h2, .dashboard-page .card-title, .dashboard-page .card-text {
+        color: #000000 !important;
+    }
+

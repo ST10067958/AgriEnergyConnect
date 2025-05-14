@@ -43,4 +43,4 @@ The prototype is a web-based system that allows employees to manage farmer profi
 - The system is pre-populated with realistic sample data to showcase core functionality.
 - All major project features have been implemented and tested as per the provided rubric.
 
-© 2025 – Developed for the Independent Institute of Education (IIE) POE Submission
+

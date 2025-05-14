@@ -1,27 +1,29 @@
-﻿@model List<AgriEnergyConnect.Models.Product>
-@{
-    ViewData["Title"] = "Farmer Dashboard";
-}
-<h2>Welcome, @ViewBag.Username!</h2>
+﻿@model List<Product>
 
-<a asp-action="AddProduct" class="btn btn-success">+ Add New Product</a>
+<div class="container dashboard-page text-center">
+    <h2><i class="bi bi-basket-fill text-success"></i> Your Products</h2>
+    <a asp-controller="Farmer" asp-action="AddProduct" class="btn btn-primary mb-4">
+        <i class="bi bi-plus-circle"></i> Add New Product
+    </a>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Production Date</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Name</td>
-                <td>@item.Category</td>
-                <td>@item.ProductionDate.ToShortDateString()</td>
-            </tr>
-        }
-    </tbody>
-</table>
+    @if (!Model.Any())
+    {
+        <p class="lead text-light">You have not added any products yet.</p>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-md-2 g-4 mt-4">
+            @foreach (var product in Model)
+            {
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">@product.Name</h5>
+                            <p class="card-text"><small>@product.ProductionDate.ToShortDateString()</small></p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
