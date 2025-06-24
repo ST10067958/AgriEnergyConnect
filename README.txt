@@ -38,6 +38,12 @@ The prototype is a web-based system that allows employees to manage farmer profi
 - Responsive UI using Bootstrap and professional icon styling
 - Sample data seeded on first launch (can be removed for live use)
 
+
+https://github.com/ST10067958/AgriEnergyConnect.git
+
+🧪Features Demonstrated:
+https://youtu.be/jvVer346MeA 
+
 📂 Submission Notes:
 - The prototype includes all required source code and database integration files.
 - The system is pre-populated with realistic sample data to showcase core functionality.
